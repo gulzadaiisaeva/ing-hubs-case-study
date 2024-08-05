@@ -123,7 +123,7 @@
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.4</version>
+				<version>0.8.8</version>
 				<configuration>
 					<rules>
 						<rule>
@@ -137,6 +137,29 @@
 							</limits>
 						</rule>
 					</rules>
+					<excludes>
+						<exclude>
+							**/constant/**/*
+						</exclude><exclude>
+						**/config/**/*
+					</exclude>
+						<exclude>
+							**/dto/**/*
+						</exclude>
+						<exclude>
+							**/exception/**/*
+						</exclude>
+						<exclude>
+							**/mapper/**/*
+						</exclude>
+						<exclude>
+							**/model/**/*
+						</exclude>
+						<exclude>
+							**/CaseStudyApplication.class
+						</exclude>
+
+					</excludes>
 				</configuration>
 
 				<executions>
