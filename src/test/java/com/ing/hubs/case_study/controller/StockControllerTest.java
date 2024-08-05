@@ -120,15 +120,4 @@ public class StockControllerTest {
 
         verify(stockService, times(1)).deleteStock("AAPL");
     }
-
-//    @Test
-//    void testCreateStockValidationError() throws Exception {
-//        StockCreationDTO stockCreationDTO = StockCreationDTO.builder().build();
-//
-//        mockMvc.perform(post("/api/v1/stock")
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .content(objectMapper.writeValueAsString(stockCreationDTO)))
-//                .andExpect(status().isBadRequest())
-//                .andExpect(jsonPath("$.errors[0]").value("Name is required"));
-//    }
 }
