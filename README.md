@@ -57,10 +57,11 @@ This command maps port 8080 of the Docker container to port 8080 on your local m
 
 ### Postman Collection
 
-A Postman collection is included in the root folder of the repository. You can use it to test the API endpoints provided by the application. The collection file is named `case study.postman_collection.json`
+A Postman collection is included in the root folder of the repository. You can use it to test the API endpoints provided by the application. The collection file is [case-study.postman_collection.json](case-study.postman_collection.json)
 
 ## Api Documentation
 
+After running the project the API documentation will be available at the following URL:
 [Swagger](http://localhost:8080/case-study/swagger-ui/index.html)
 
 ### Contact
