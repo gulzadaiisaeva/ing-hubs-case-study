@@ -38,9 +38,15 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers("/api/**").authenticated()
+                                .requestMatchers("/h2-console/**").permitAll()
                                 .anyRequest().permitAll()
                 )
-                .httpBasic(withDefaults()); // Enable HTTP Basic Authentication
+                .httpBasic(withDefaults()) // Enable HTTP Basic Authentication
+                .headers(headers ->
+                        headers.contentSecurityPolicy(csp -> csp
+                                .policyDirectives("frame-ancestors 'self'") // Allow frames from the same origin
+                        )
+                );
         return http.build();
     }
 }

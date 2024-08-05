@@ -5,6 +5,7 @@ import com.ing.hubs.case_study.dto.StockExchangeCreationDTO;
 import com.ing.hubs.case_study.dto.StockExchangeDTO;
 import com.ing.hubs.case_study.exception.CaseStudyException;
 import com.ing.hubs.case_study.service.StockExchangeService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -23,12 +24,12 @@ public class StockExchangeController {
     }
 
     @PostMapping
-    public StockExchangeDTO createStockExchange(@RequestBody StockExchangeCreationDTO stockExchangeDTO) throws CaseStudyException {
+    public StockExchangeDTO createStockExchange(@Valid @RequestBody StockExchangeCreationDTO stockExchangeDTO) throws CaseStudyException {
         return stockExchangeService.createStockExchange(stockExchangeDTO);
     }
 
     @PostMapping("/{name}")
-    public void addStockToExchange(@PathVariable String name, @RequestBody StockAdditionDTO stockDTO) throws CaseStudyException {
+    public void addStockToExchange(@PathVariable String name, @Valid @RequestBody StockAdditionDTO stockDTO) throws CaseStudyException {
         stockExchangeService.addStockToExchange(name, stockDTO);
     }
 

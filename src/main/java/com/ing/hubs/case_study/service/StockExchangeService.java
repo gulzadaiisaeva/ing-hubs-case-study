@@ -32,6 +32,9 @@ public class StockExchangeService {
         String decodedName = URLDecoder.decode(name, StandardCharsets.UTF_8);
         Optional<StockExchange> stockExchange = stockExchangeRepository.findByName(decodedName);
         if (stockExchange.isPresent()) {
+            if(!stockExchange.get().isLiveInMarket()){
+                throw new CaseStudyException(String.format("Stock exchange with name:%s is not live in the market", name));
+            }
             return StockExchangeMapper.INSTANCE.toDTO(stockExchange.get());
         } else {
             throw new CaseStudyException(String.format("Stock exchange with name:%s not found", name));
