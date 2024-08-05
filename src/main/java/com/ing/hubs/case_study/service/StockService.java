@@ -2,6 +2,7 @@ package com.ing.hubs.case_study.service;
 
 import com.ing.hubs.case_study.dto.StockCreationDTO;
 import com.ing.hubs.case_study.dto.StockDTO;
+import com.ing.hubs.case_study.dto.StockUpdateDTO;
 import com.ing.hubs.case_study.exception.CaseStudyException;
 import com.ing.hubs.case_study.exception.ValidationException;
 import com.ing.hubs.case_study.mapper.StockMapper;
@@ -43,10 +44,10 @@ public class StockService {
         return StockMapper.INSTANCE.toDTO(stockRepository.save(stock));
     }
 
-    public StockDTO updateStock(StockDTO stockDTO) throws CaseStudyException {
+    public StockDTO updateStock(StockUpdateDTO stockDTO) throws CaseStudyException {
         Stock stock = stockRepository.findByName(stockDTO.getName()).orElseThrow(()
                 -> new CaseStudyException(String.format("Stock with name %s not found", stockDTO.getName())));
-        stock.setCurrentPrice(stockDTO.getCurrentPrice());
+        stock.setCurrentPrice(stockDTO.getUpdatedPrice());
         return StockMapper.INSTANCE.toDTO(stockRepository.save(stock));
     }
 

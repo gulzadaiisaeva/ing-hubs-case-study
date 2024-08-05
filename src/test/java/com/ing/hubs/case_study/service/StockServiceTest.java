@@ -2,6 +2,7 @@ package com.ing.hubs.case_study.service;
 
 import com.ing.hubs.case_study.dto.StockCreationDTO;
 import com.ing.hubs.case_study.dto.StockDTO;
+import com.ing.hubs.case_study.dto.StockUpdateDTO;
 import com.ing.hubs.case_study.exception.CaseStudyException;
 import com.ing.hubs.case_study.mapper.StockMapper;
 import com.ing.hubs.case_study.model.Stock;
@@ -94,9 +95,9 @@ public class StockServiceTest {
 
     @Test
     void testUpdateStockSuccess() throws CaseStudyException {
-        StockDTO stockDTO = StockDTO.builder()
+        StockUpdateDTO stockDTO = StockUpdateDTO.builder()
                 .name("AAPL")
-                .currentPrice(BigDecimal.valueOf(155))
+                .updatedPrice(BigDecimal.valueOf(155))
                 .build();
 
         Stock stock = new Stock();
@@ -122,9 +123,9 @@ public class StockServiceTest {
 
     @Test
     void testUpdateStockNotFound() throws CaseStudyException {
-        StockDTO stockDTO = StockDTO.builder()
+        StockUpdateDTO stockDTO = StockUpdateDTO.builder()
                 .name("AAPL")
-                .currentPrice(BigDecimal.valueOf(155))
+                .updatedPrice(BigDecimal.valueOf(155))
                 .build();
 
         when(stockRepository.findByName(anyString())).thenReturn(Optional.empty());

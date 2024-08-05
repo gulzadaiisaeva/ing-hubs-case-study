@@ -3,6 +3,7 @@ package com.ing.hubs.case_study.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ing.hubs.case_study.dto.StockCreationDTO;
 import com.ing.hubs.case_study.dto.StockDTO;
+import com.ing.hubs.case_study.dto.StockUpdateDTO;
 import com.ing.hubs.case_study.service.StockService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -97,7 +98,7 @@ public class StockControllerTest {
                 .description("Apple Inc.")
                 .currentPrice(BigDecimal.valueOf(155))
                 .build();
-        when(stockService.updateStock(any(StockDTO.class))).thenReturn(stockDTO);
+        when(stockService.updateStock(any(StockUpdateDTO.class))).thenReturn(stockDTO);
 
         mockMvc.perform(put("/api/v1/stock")
                         .contentType(MediaType.APPLICATION_JSON)

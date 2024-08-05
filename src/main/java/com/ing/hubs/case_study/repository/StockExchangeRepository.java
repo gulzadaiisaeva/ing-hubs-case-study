@@ -10,6 +10,7 @@ import java.util.Optional;
 import java.util.Set;
 
 public interface StockExchangeRepository extends JpaRepository<StockExchange, Long> {
+    @Query("SELECT e FROM StockExchange e WHERE LOWER(e.name) = LOWER(:name)")
     Optional<StockExchange> findByName(String name);
     Set<StockExchange> findByStocksContains(Stock stock);
 }

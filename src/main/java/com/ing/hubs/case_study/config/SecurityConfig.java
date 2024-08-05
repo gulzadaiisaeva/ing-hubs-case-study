@@ -1,5 +1,6 @@
 package com.ing.hubs.case_study.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -16,11 +17,17 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @Configuration
 public class SecurityConfig {
 
+    @Value("${SPRING_SECURITY_USER_NAME}")
+    private String username;
+
+    @Value("${SPRING_SECURITY_USER_PASSWORD}")
+    private String password;
+
     @Bean
     public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-        manager.createUser(User.withUsername("user")
-                .password(passwordEncoder.encode("password"))
+        manager.createUser(User.withUsername(username)
+                .password(passwordEncoder.encode(password))
                 .roles("USER")
                 .build());
         return manager;
@@ -49,4 +56,6 @@ public class SecurityConfig {
                 );
         return http.build();
     }
+
+
 }

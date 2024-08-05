@@ -2,6 +2,7 @@ package com.ing.hubs.case_study.controller;
 
 import com.ing.hubs.case_study.dto.StockCreationDTO;
 import com.ing.hubs.case_study.dto.StockDTO;
+import com.ing.hubs.case_study.dto.StockUpdateDTO;
 import com.ing.hubs.case_study.exception.CaseStudyException;
 import com.ing.hubs.case_study.service.StockService;
 import lombok.RequiredArgsConstructor;
@@ -29,7 +30,7 @@ public class StockController {
     }
 
     @PutMapping
-    public StockDTO updateStock(@RequestBody StockDTO stockDTO) throws CaseStudyException {
+    public StockDTO updateStock(@RequestBody StockUpdateDTO stockDTO) throws CaseStudyException {
         return stockService.updateStock(stockDTO);
     }
 

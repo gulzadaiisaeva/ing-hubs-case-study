@@ -82,7 +82,12 @@ public class StockExchangeService {
                 .orElseThrow(() -> new CaseStudyException(String.format("Stock exchange with name:%s not found", name)));
         Stock stock = stockRepository.findByName(stockName)
                 .orElseThrow(() -> new CaseStudyException(String.format("Stock with name:%s not found", stockName)));
-        stockExchange.getStocks().remove(stock);
+        if (stockExchange.getStocks().contains(stock)) {
+            stockExchange.getStocks().remove(stock);
+        }else {
+            throw new CaseStudyException(String.format("Stock with name %s is not exists in this Stock Exchange", name));
+        }
+
         updateLiveInMarket(stockExchange);
         stockExchangeRepository.save(stockExchange);
     }
