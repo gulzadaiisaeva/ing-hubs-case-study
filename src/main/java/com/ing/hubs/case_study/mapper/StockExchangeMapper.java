@@ -12,5 +12,6 @@ public interface StockExchangeMapper {
     StockExchangeMapper INSTANCE = Mappers.getMapper(StockExchangeMapper.class);
 
     StockExchangeDTO toDTO(StockExchange stockExchange);
+
     StockExchange toEntity(StockExchangeCreationDTO stockExchangeDTO);
 }

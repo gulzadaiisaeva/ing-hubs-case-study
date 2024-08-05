@@ -32,7 +32,7 @@ public class StockExchangeService {
         String decodedName = URLDecoder.decode(name, StandardCharsets.UTF_8);
         Optional<StockExchange> stockExchange = stockExchangeRepository.findByName(decodedName);
         if (stockExchange.isPresent()) {
-            if(!stockExchange.get().isLiveInMarket()){
+            if (!stockExchange.get().isLiveInMarket()) {
                 throw new CaseStudyException(String.format("Stock exchange with name:%s is not live in the market", name));
             }
             return StockExchangeMapper.INSTANCE.toDTO(stockExchange.get());
@@ -84,7 +84,7 @@ public class StockExchangeService {
                 .orElseThrow(() -> new CaseStudyException(String.format("Stock with name:%s not found", stockName)));
         if (stockExchange.getStocks().contains(stock)) {
             stockExchange.getStocks().remove(stock);
-        }else {
+        } else {
             throw new CaseStudyException(String.format("Stock with name %s is not exists in this Stock Exchange", name));
         }
 

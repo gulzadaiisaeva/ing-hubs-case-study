@@ -48,8 +48,6 @@
 			<artifactId>spring-security-config</artifactId>
 			<version>6.3.1</version>
 		</dependency>
-
-
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
@@ -96,7 +94,6 @@
 			<artifactId>mockito-core</artifactId>
 			<scope>test</scope>
 		</dependency>
-
     </dependencies>
 
 	<build>
@@ -112,15 +109,10 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
-
-
-
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-
-
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
@@ -139,30 +131,15 @@
 						</rule>
 					</rules>
 					<excludes>
-						<exclude>
-							**/constant/**/*
-						</exclude><exclude>
-						**/config/**/*
-					</exclude>
-						<exclude>
-							**/dto/**/*
-						</exclude>
-						<exclude>
-							**/exception/**/*
-						</exclude>
-						<exclude>
-							**/mapper/**/*
-						</exclude>
-						<exclude>
-							**/model/**/*
-						</exclude>
-						<exclude>
-							**/CaseStudyApplication.class
-						</exclude>
-
+						<exclude>**/constant/**/*</exclude>
+						<exclude>**/config/**/*</exclude>
+						<exclude>**/dto/**/*</exclude>
+						<exclude>**/exception/**/*</exclude>
+						<exclude>**/mapper/**/*</exclude>
+						<exclude>**/model/**/*</exclude>
+						<exclude>**/CaseStudyApplication.class</exclude>
 					</excludes>
 				</configuration>
-
 				<executions>
 					<execution>
 						<goals>

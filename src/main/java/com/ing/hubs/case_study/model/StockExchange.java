@@ -3,7 +3,6 @@ package com.ing.hubs.case_study.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.HashSet;
 import java.util.Set;
 
 
