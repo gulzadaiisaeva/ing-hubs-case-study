@@ -17,19 +17,19 @@ public class RestExceptionHandler {
 
     @ExceptionHandler(value = CaseStudyException.class)
     protected ResponseEntity<ErrorResponse> handleCaseStudyException(CaseStudyException ex) {
-        log.error("Case Study Exception: {}", ex.getMessage());
-        return new ResponseEntity<>(buildErrorResponse(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR), HttpStatus.BAD_REQUEST);
+        log.info("Case Study Exception: {}", ex.getMessage());
+        return new ResponseEntity<>(buildErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(value = ValidationException.class)
     protected ResponseEntity<ErrorResponse> handleValidationException(ValidationException ex) {
-        log.error("Validation Exception: {}", ex.getMessage());
+        log.info("Validation Exception: {}", ex.getMessage());
         return new ResponseEntity<>(buildErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(value = Exception.class)
     protected ResponseEntity<ErrorResponse> handleExceptions(Exception ex) {
-        log.error("Exception: {}", ex.getMessage());
+        log.info("Exception: {}", ex.getMessage());
         return new ResponseEntity<>(buildErrorResponse(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR), HttpStatus.INTERNAL_SERVER_ERROR);
 
     }
